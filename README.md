@@ -66,12 +66,12 @@ UML_Diagram.png (or UML_Diagram.pdf)
 
 ## 🧩 Step 1 — Choose Your Dataset
 
-**Dataset Name:**  
-**Source / Link:**  
+**Dataset Name:**  State Census Data
+**Source / Link:**  https://runestone.academy/ns/books/published/csawesome2/external/_static/datasets/StateData2020-CDC-Census.csv
 
 **What this dataset contains (2–3 sentences):**  
-____________________________________________________________________  
-____________________________________________________________________  
+It contains statistical inforamiton about different states in the US. 
+We can see population sizes, firearm deaths, and drug overdose deaths. 
 
 ---
 
@@ -80,8 +80,8 @@ ____________________________________________________________________
 Your guiding question should be something you can answer using your dataset.
 
 **My guiding question:**  
-____________________________________________________________________  
-____________________________________________________________________  
+Is there a correlation between the rates of drug overdoses and  
+firearm deaths within states?
 
 Examples:
 

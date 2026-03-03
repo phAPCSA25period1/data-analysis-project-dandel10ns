@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Scanner;
 
 /**
  * Main application for the Data Analysis Mini‑Project.
@@ -18,9 +19,11 @@ public class App {
     public static void main(String[] args) {
 
         // TODO: Update this with your CSV file path
-        File file = new File("data/your_dataset.csv");
+        File file = new File("https://runestone.academy/ns/books/published/csawesome2/external/_static/datasets/StateData2020-CDC-Census.csv");
 
         // TODO: Create an array of Data objects to store data
+        Data arr[] = new Data[file.length];
+        Scanner scan = new Scanner(file);
 
 
         // TODO: Read file using Scanner
@@ -30,7 +33,21 @@ public class App {
         // - Convert text to numbers when needed
         // - Create new Data objects
         // - Add to your array
+        int i = 0;
+        while (scan.hasNext()){
+            if (i==0){
+                scan.nextLine();
+            }
+            String line = scan.nextLine();
+            String[] parts = line.spilt(",");
+            String name = parts[1];
+            String overdoseDeaths = parts[4];
+            String firearmDeaths = parts[6];
+            Data state = new Data(name, overdoseDeaths, firearmDeaths);
+            arr[i] = state;
 
+            i++;
+        }
 
         // TODO: Call your analysis methods
         // Example:

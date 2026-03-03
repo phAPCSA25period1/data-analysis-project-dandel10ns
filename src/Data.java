@@ -14,17 +14,35 @@ public class Data {
     // TODO: Add at least 3 private attributes
     // Example:
     // private String name;
-    // private int population;
-    // private double value;
-
+    // private String population;
+    // private String value;
+    private double firearmDeaths;
+    private String name;
+    private double overdoseDeaths;
 
     // TODO: Create a constructor that takes all attributes as parameters
-
+    public Data (String name, String firearmDeaths, String overdoseDeaths){
+        this.name = name;
+        this.firearmDeaths = Double.parseDouble(firearmDeaths);
+        this.overdoseDeaths = Double.parseDouble(overdoseDeaths);
+    }
 
     // TODO: Add getters for attributes you need
+    public String getName(){
+        return name;
+    }
 
+    public double getOverdose(){
+        return overdoseDeaths;
+    }
+
+    public double getFirearm(){
+        return firearmDeaths;
+    }
     // TODO: Add other data analysis methods
 
     // TODO: Override toString() to return a readable representation of your object
-
+    public String toString(){
+        System.out.println("In " + name + "there are " + firearmDeaths + " firearm deaths per 100 people and " + overdoseDeaths + " overdose deaths per 100 people.");
+    }
 }
