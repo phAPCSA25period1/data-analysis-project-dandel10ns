@@ -80,8 +80,7 @@ We can see population sizes, firearm deaths, and drug overdose deaths.
 Your guiding question should be something you can answer using your dataset.
 
 **My guiding question:**  
-Is there a correlation between the rates of drug overdoses and  
-firearm deaths within states?
+Which state has the highest overdose death rates?
 
 Examples:
 

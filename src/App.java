@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
+import java.io.IOException;
 
 /**
  * Main application for the Data Analysis Mini‑Project.
@@ -18,53 +19,47 @@ public class App {
 
     public static void main(String[] args) {
 
-        // TODO: Update this with your CSV file path
         File file = new File("https://runestone.academy/ns/books/published/csawesome2/external/_static/datasets/StateData2020-CDC-Census.csv");
+        Data[] states = new Data[53];
 
-        // TODO: Create an array of Data objects to store data
-        Data arr[] = new Data[file.length];
-        Scanner scan = new Scanner(file);
-
-
-        // TODO: Read file using Scanner
-        // - Skip header if needed
-        // - Loop through rows
-        // - Split each line by commas
-        // - Convert text to numbers when needed
-        // - Create new Data objects
-        // - Add to your array
-        int i = 0;
-        while (scan.hasNext()){
-            if (i==0){
+        try (Scanner scan = new Scanner(file)){
+            int i = 0;
+            //skip header row
+            if (scan.hasNextLine()){
                 scan.nextLine();
             }
-            String line = scan.nextLine();
-            String[] parts = line.spilt(",");
-            String name = parts[1];
-            String overdoseDeaths = parts[4];
-            String firearmDeaths = parts[6];
-            Data state = new Data(name, overdoseDeaths, firearmDeaths);
-            arr[i] = state;
 
-            i++;
+            while (scan.hasNext() && i < states.length){
+                String line = scan.nextLine();
+                String[] parts = line.split(",");
+                states[i] = new Data(parts[1], parts[4], parts[6]);
+                i++;
         }
 
-        // TODO: Call your analysis methods
-        // Example:
-        // double maxValue = findMaxValue(dataList);
-        // double average = computeAverageValue(dataList);
+        //call analysis methods
+        String highest = findMaxOverdose(states);
+        System.out.println("Highest overdose rate: " + highest); 
+    }
+    catch (IOException e) {
+        System.out.println("Error reading file: " + e.getMessage());
+    }
 
-
-        // TODO: Print insights
-        // - Number of rows loaded
-        // - Min, max, average, or any other findings
-        // - Final answer to your guiding question
-
-
-        // OPTIONAL TODO:
-        // Add user interaction:
-        // Ask the user what kind of analysis they want to see
     }
 
 
+
+/**
+ * Algorithm to find the state with the highest overdose death rate.
+ */
+public static String findMaxOverdose(Data[] arr) {
+        double max = -1.0;
+        String resultState = "";
+        for (Data sta : arr) {
+            if (sta != null && sta.getOverdose() > max) {
+                max = sta.getOverdose();
+                resultState = sta.getName();
+            }
+        }
+        return resultState;
+    }
 }
